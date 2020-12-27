@@ -1,0 +1,8 @@
+Variations of LIS (Longest Increasing Subsequence)
+
+1.  Minimum deletions to make an array sorted. 
+	Find longest increasing subsequence and subtract it from array length.
+	
+2.	Maximum sum increasing subsequence
+	Find lis after adding element instead of length
+
