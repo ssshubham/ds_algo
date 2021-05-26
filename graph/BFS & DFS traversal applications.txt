@@ -1,0 +1,19 @@
+Applications of bfs:
+
+1. Shortest Path in an unweighted graph
+2. Crawlers in search engine
+3. Peer to Peer networks like bit torrent searches for neighbour and then their neighbour for content
+4. Social Networking Search , if person is immediate friend then it will be shown first, then their friends etc.
+5. Garbage collection, unreachable data are deleted
+6. Cycle detection , dfs can also be used
+7. Broadcasting
+8. Ford Fulkerson Algorithm
+
+Applications of DFS:
+
+1. Cycle Detection  
+2. Topological Sorting // Makefile Utility
+3. Strongly Connected Components 
+4. Solving Maze and Similar Puzzle // dfs preferred because you don't have to go for each child node, backtracking algorithms also work with this approach.
+				   // if we find a solution, then print it otherwise see for next child 
+5. Path  Finding // natural in case of dfs because all path nodes are in recursion call stack
