@@ -4,12 +4,13 @@
 
 using namespace std;
 
-// Kahn's Algorithm
+// Find Cycle Using Kahn's Algorithm
 // A directed graph is given , if A --> B , it means that A needs to be finished first before B
 // Print entire graph considering this dependency
 
 // Using BFS the intuiative way
-void topologicalSorting(vector<vector<int> > graph, int n)
+
+bool topologicalSorting(vector<vector<int> > graph, int n)
 {
 	queue<int> vertices;
 	int incomingEdges[n+1];
@@ -17,6 +18,7 @@ void topologicalSorting(vector<vector<int> > graph, int n)
 	{
 		incomingEdges[i]=0;
 	}
+	int count = 0;
 	// Find Zero incoming edges vertex and push to queue
 	for(auto vertex : graph)
 	{
@@ -38,7 +40,7 @@ void topologicalSorting(vector<vector<int> > graph, int n)
 	{
 		int node = vertices.front();
 		vertices.pop();
-		cout << node << " ";
+		//cout << node << " ";
 		for(auto childNodes : graph[node])
 		{
 			incomingEdges[childNodes]--;
@@ -47,7 +49,11 @@ void topologicalSorting(vector<vector<int> > graph, int n)
 				vertices.push(childNodes);
 			}
 		}
+		count++;
 	}
+	if(count < n)
+		return true;
+	return false;
 }
 
 vector<vector<int> > createGraph(vector<vector<int> > edges, int n) {
@@ -63,7 +69,7 @@ vector<vector<int> > createGraph(vector<vector<int> > edges, int n) {
 
 /*
 0 --> 1 --> 3       6
-|         ^         |
+|         ^         ^
 |        |          |
 >       |           >
 2 -- > 4 --> 5      7
@@ -72,10 +78,10 @@ vector<vector<int> > createGraph(vector<vector<int> > edges, int n) {
 int main()
 {
 	int n = 8;
-	vector<vector<int> > inputEdges = {{0,1}, {0,2}, {1,3}, {4,5}, {2,4}, {4,3}, {6,7}};
+	vector<vector<int> > inputEdges = {{0,1}, {0,2}, {1,3}, {4,5}, {2,4}, {4,3}, {6,7}, {7,6}};
 	vector<vector<int> > graph = createGraph(inputEdges, n);
 	
-	topologicalSorting(graph, n);
+	cout << topologicalSorting(graph, n);
 	return 0;
 	
 }
